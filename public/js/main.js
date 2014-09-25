@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $('.bg img').fullscreener();
 
-    $.getJSON("/api/button/count", function( data ) {
+    $.getJSON("http://localhost:3000/api/button/count", function( data ) {
 
     	$('.text h1').html(data.clicks);
 
@@ -16,7 +16,7 @@ $(document).ready(function(){
 
         e.stopPropagation(); e.preventDefault();
         
-    	$.getJSON("/api/button/add", function( data ) {
+    	$.getJSON("http://localhost:3000/api/button/add", function( data ) {
 
 	    	$('.text h1').html(data.clicks);
 

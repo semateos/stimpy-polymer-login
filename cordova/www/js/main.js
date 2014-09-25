@@ -6,15 +6,17 @@ $(document).ready(function(){
 
     $('.bg img').fullscreener();
 
-    $.getJSON("/api/button/count", function( data ) {
+    $.getJSON("http://localhost:3000/api/button/count", function( data ) {
 
     	$('.text h1').html(data.clicks);
 
     });
 
-    $('.text button').on('click', function(){
+    $('.text button').on('touchstart click', function(e){
 
-    	$.getJSON("/api/button/add", function( data ) {
+        e.stopPropagation(); e.preventDefault();
+        
+    	$.getJSON("http://localhost:3000/api/button/add", function( data ) {
 
 	    	$('.text h1').html(data.clicks);
 
