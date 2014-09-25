@@ -53,9 +53,9 @@ gulp.task('default', function(){
         .pipe(gulp.dest('./images/'));
 });
 
-gulp.task('static', function(){
+gulp.task('cordova', function(){
 
-    gulp.src('./public/**').pipe(gulp.dest('./static'));
+    gulp.src('./public/**').pipe(gulp.dest('./cordova/www'));
 
     var server = Hapi.createServer(config.host, config.port, config.hapi.options);
         
@@ -70,7 +70,7 @@ gulp.task('static', function(){
 
             var result = response.result;
 
-            string_src("index.html", result).pipe(gulp.dest('./static/'));
+            string_src("index.html", result).pipe(gulp.dest('./cordova/www/'));
 
             //console.log(result);
         });
