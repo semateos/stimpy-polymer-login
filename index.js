@@ -2,6 +2,7 @@
 
 // Dependencies
 var Hapi = require('hapi');
+var Hoek = require('hoek');
 
 // Server Config
 var config = require('./server/config');
@@ -10,7 +11,21 @@ var config = require('./server/config');
 var plugins = require('./server/config/plugins');
 
 exports.register = function(plugin, options, next) {
-	
+
+	//make config available to templates
+	plugin.ext('onPostHandler', function (request, reply) {
+
+        // Get the response object
+        var response = request.response;
+
+        if (request.response.variety === 'view') { 
+	        request.response.source.context = Hoek.applyToDefaults(config, request.response.source.context);
+	    }
+
+	    reply();
+
+    });
+
 	plugin.register(plugins, function(err) {
 	    
 	    if (err) throw err;
