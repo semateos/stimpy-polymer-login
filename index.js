@@ -13,7 +13,7 @@ var plugins = require('./server/config/plugins');
 exports.register = function(plugin, options, next) {
 
 	//make config available to templates
-	/*plugin.ext('onPostHandler', function (request, reply) {
+	plugin.ext('onPostHandler', function (request, reply) {
 
         // Get the response object
         var response = request.response;
@@ -24,7 +24,7 @@ exports.register = function(plugin, options, next) {
 
 	    reply();
 
-    });*/
+    });
 
 	plugin.register(plugins, function(err) {
 	    
