@@ -17,7 +17,8 @@ module.exports = {
                 engines: {
                     html: require('swig')
                 }
-            }
+            },
+            cors: true
         }
     }
 }
