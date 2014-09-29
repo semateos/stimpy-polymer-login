@@ -21,24 +21,19 @@ To test the ios build:
 $ stimpy emulate ios
 ```
 
-####To test on a real device, you'll want a live server.  We've provided a simple method for deploy your project to heroku (which has a free tier).  You'll need a [heroku login](https://signup.heroku.com/dc) and the [heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+####Device Testing
+To test on an actual device you'll probably want a live server.  We've provided a simple method for deploy your project to heroku (which has a free tier).  You'll need a [heroku login](https://signup.heroku.com/dc) and the [heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
 
 To build a live test server:
 ```bash
 $ stimpy deploy heroku
 ```
 
-Edit `server/config/index.js` and replace the local api endpoint with the heroku server.
+Edit `server/config/index.js` and replace the endpoint `api: 'http://localhost:3000'` with the new heroku server e.g. `api: 'http://sleepy-inlet-8224.herokuapp.com'`
 
 Open `cordova/platforms/ios/Stimpy Mobile.xcodeproj` in Xcode.
 
 Run the project on the attached device following the Apple Developer proceedure for setting up a testing device.
-
-=============
-
-See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-
-Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
 
 ## The Stack:
 **Node.js** - Because it's fast, easy to get started, and Javscript is awesome.
