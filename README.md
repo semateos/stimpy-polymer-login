@@ -1,43 +1,41 @@
-Stimpy Medium
+Stimpy Mobile
 =============
 
-Stimpy is a simple yet inventive fellow, with a hint of refinement.  This is a boilerplate for Hapi.js web or api apps.  Stimpy is perfectly content to be run as a hapi plugin or a standalone server.
+[Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for Hapi.js backed app that works on the web or as a nativized mobile app.  The idea is to build one application that works as well packaged as a native app as it does on the web.  We're not quite there yet, but getting close.  Contributors welcomed with open arms and buttocks.
 
-To install:
+To install Stimpy:
 ```bash
-$ git clone https://github.com/semateos/stimpy-medium.git
-$ cd stimpy-medium
-$ npm install
+$ npm install -g stimpy supervisor bower gulp cordova
 ```
-Install required utilities:
+To start a new Stimpy Mobile project
 ```bash
-$ npm install -g supervisor bower gulp
+$ stimpy create mobile my_new_project
+$ cd my_new_project
 ```
-Start the server by running the command:
+Start the local testing server by running the command:
 ```bash
-$ npm start
+$ stimpy start
 ```
-To add front-end packages (for example):
+To test the ios build:
 ```bash
-$ bower install --save d3
-```
-
-####Production
-Before going into production you will want to concatenate and minify your assets. We will use Gulp for this
-
-To build run:
-```bash
-$ gulp
+$ stimpy emulate ios
 ```
 
-####Live test with heroku
-To build run:
+####To test on a real device, you'll want a live server.  We've provided a simple method for deploy your project to heroku (which has a free tier).  You'll need a [heroku login](https://signup.heroku.com/dc) and the [heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+
+To build a live test server:
 ```bash
-$ heroku login
-$ heroku create
-$ git push heroku master
-$ heroku open
+$ stimpy deploy heroku
 ```
+
+Edit `server/config/index.js` and replace the local api endpoint with the heroku server.
+
+Open `cordova/platforms/ios/Stimpy Mobile.xcodeproj` in Xcode.
+
+Run the project on the attached device following the Apple Developer proceedure for setting up a testing device.
+
+=============
+
 See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
 Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
