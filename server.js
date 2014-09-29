@@ -11,7 +11,7 @@ var server = Hapi.createServer(config.host, config.port, config.hapi.options);
 
 server.pack.register([
     
-	/*{
+	{
         plugin: require("good"),
         options: {
             subscribers: {
@@ -19,7 +19,7 @@ server.pack.register([
                 './tmp/logs/': ['ops', 'request', 'log', 'error']
             }
         }
-    },*/
+    },
 	{ 
 		plugin: require("./index") 
 	}
