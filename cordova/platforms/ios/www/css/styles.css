@@ -4,6 +4,7 @@ html,body {
   padding: 0;
   background-color: #E5E5E5;
   font-family: 'RobotoDraft', sans-serif;
+
 }
 core-header-panel {
   height: 100%;
@@ -22,6 +23,8 @@ core-toolbar {
   -ms-user-select: none;
   user-select: none;
   text-transform: uppercase;
+  -webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
 }
 .container {
   width: 80%;

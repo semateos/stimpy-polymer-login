@@ -27,5 +27,10 @@ module.exports = {
         handler: {
             directory: { path: rootPath + '/public/bower_components' }
         }
+    },
+    components: {
+        handler: {
+            directory: { path: rootPath + '/public/components' }
+        }
     }
 }
