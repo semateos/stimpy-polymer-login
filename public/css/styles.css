@@ -1,47 +1,40 @@
-* { 
-	padding: 0; 
-	margin: 0; 
-	outline: 0; 
-}
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #E5E5E5;
+  font-family: 'RobotoDraft', sans-serif;
 
-html,
-body { 
-	height: 100%;
-	font-size: 10px;
 }
-
-img { 
-	border: 0; 
-	vertical-align: middle; 
+core-header-panel {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; 
 }
-
-.bg { 
-	position: relative; 
-	min-height: 100%;
+core-toolbar {
+  background: #03a9f4;
+  color: white;
 }
-
-.text{ 
-	display: block;
-	text-align: center;
-	font-family: sans-serif;
-	color: white;
-	position: absolute;
-  	top: 50%;
-  	left: 50%;
-  	transform: translateY(-50%) translateX(-50%);
-  	-webkit-transform: translateY(-50%) translateX(-50%);
+#tabs {
+  width: 100%;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: uppercase;
+  -webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
 }
-
-.text h1{
-	font-size: 10em;
+.container {
+  width: 80%;
+  margin: 50px auto;
 }
-
-.text button{
-	font-size: 3em;
-	background: transparent;
-	border: 3px solid white;
-	color: white;
-	padding: 20px;
-	border-radius: 5px;
-	cursor: pointer;
+@media (min-width: 481px) {
+  #tabs {
+    width: 200px;
+  }
+  .container {
+    width: 400px;
+  }
 }

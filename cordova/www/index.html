@@ -8,6 +8,8 @@
 
     
     
+        <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css?v=010"/>
+    
         <link rel="stylesheet" href="bower_components/fullscreener/src/jquery.fullscreener.css?v=010"/>
     
         <link rel="stylesheet" href="css/styles.css?v=010"/>
@@ -16,19 +18,31 @@
     <script>
     	window.api = 'http://localhost:3000'; 
     </script>
+	
+	<link rel="import" href="bower_components/font-roboto/roboto.html">
+	<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+	<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+	<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
 
 
 </head>
-<body>
+<body unresolved>
     
 
-<div class="bg">
-    <img src="images/stimpy.gif" width="500" height="375" alt="" />
-    <div class="text">
-    	<h1>0</h1>
-    	<button>PUSH THE BUTTON</button>
-    </div>
-</div>
+<core-header-panel>
+
+	<core-toolbar>
+
+		<paper-tabs id="tabs" selected="all" self-end>
+			<paper-tab name="all">All</paper-tab>
+			<paper-tab name="favorites">Favorites</paper-tab>
+		</paper-tabs>
+
+	</core-toolbar>
+
+	<!-- main page content will go here -->
+
+</core-header-panel>
 
 
     
@@ -36,6 +50,10 @@
         <script src="bower_components/jquery/dist/jquery.js?v=010"></script>
     
         <script src="bower_components/fullscreener/src/jquery.fullscreener.js?v=010"></script>
+    
+        <script src="bower_components/platform/platform.js?v=010"></script>
+    
+        <script src="bower_components/google-code-prettify/bin/prettify.min.js?v=010"></script>
     
         <script src="js/main.js?v=010"></script>
     

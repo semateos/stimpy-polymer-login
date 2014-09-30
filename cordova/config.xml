@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bigroomstudios.stimpymobile" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Stimpy Mobile</name>
+<widget id="com.bigroomstudios.stimpypolymer" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Stimpy Polymer</name>
     <description>
-        A sample Stimpy Mobile app
+        A sample Stimpy Polymer app
     </description>
     <author email="sam@bigroomstudios.com" href="http://bigroomstudios.com">
         Big Room Studios

@@ -4,12 +4,19 @@
 
 {% block content %}
 
-<div class="bg">
-    <img src="images/stimpy.gif" width="500" height="375" alt="" />
-    <div class="text">
-    	<h1>0</h1>
-    	<button>PUSH THE BUTTON</button>
-    </div>
-</div>
+<core-header-panel>
+
+	<core-toolbar>
+
+		<paper-tabs id="tabs" selected="all" self-end>
+			<paper-tab name="all">All</paper-tab>
+			<paper-tab name="favorites">Favorites</paper-tab>
+		</paper-tabs>
+
+	</core-toolbar>
+
+	<!-- main page content will go here -->
+
+</core-header-panel>
 
 {% endblock %}

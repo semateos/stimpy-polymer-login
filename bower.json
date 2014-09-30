@@ -17,6 +17,9 @@
   ],
   "dependencies": {
     "jquery": "~2.1.1",
-    "fullscreener": "~1.0.1"
+    "fullscreener": "~1.0.1",
+    "polymer": "Polymer/polymer#~0.4.1",
+    "paper-elements": "Polymer/paper-elements#~0.4.1",
+    "core-elements": "Polymer/core-elements#~0.4.1"
   }
 }
