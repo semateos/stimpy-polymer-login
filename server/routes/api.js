@@ -12,4 +12,9 @@ module.exports = [
         path: '/api/button/count',
         config: controller.count
     },
+    {
+        method: 'GET',
+        path: '/api/posts',
+        config: controller.posts
+    },
 ]

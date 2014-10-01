@@ -1,0 +1,19 @@
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="stimpy-ajax" extends="core-ajax">
+  <script>
+    Polymer({
+      ready: function() {
+      	
+      	if(this.url.charAt(0) == '/'){
+
+      		this.url = window.api + this.url;
+      	}
+      	
+      	//console.log('ajax ready: ', this.url);
+
+        this.super();
+      }
+    });
+  </script>
+</polymer-element>
