@@ -4,13 +4,8 @@ var controller = require('../controllers/api');
 module.exports = [
     {
         method: 'GET',
-        path: '/api/button/add',
-        config: controller.add
-    },
-    {
-        method: 'GET',
-        path: '/api/button/count',
-        config: controller.count
+        path: '/api/favorite/{id}/{bool}',
+        config: controller.favorite
     },
     {
         method: 'GET',

@@ -60,11 +60,17 @@
       on-core-response="{{postsLoaded}}"
       handleAs="json">
     </stimpy-ajax>
+    <stimpy-ajax id="ajaxfav"
+      auto
+      url="/api/favorite"
+      handleAs="json">
+    </stimpy-ajax>
   </template>
   <script>
   Polymer('post-service', {
     created: function() {
       this.posts = [];
+      this.fav_url = '/api/favorite';
     },
     postsLoaded: function() {
       // Make a copy of the loaded data
@@ -80,9 +86,14 @@
      * @param uid {Number} Unique ID for post.
      * @param isFavorite {Boolean} True if the user marked this post as a favorite.
      */
-    setFavorite: function(uid, isFavorite) {
+    setFavorite: function(id, isFavorite) {
       // no service backend, just log the change
-      console.log('Favorite changed: ' + uid + ", now: " + isFavorite);
+        
+      this.$.ajaxfav.url = window.api + this.fav_url + '/' + id + '/' + isFavorite;
+
+      //this.$.ajax.go();
+
+      console.log('Favorite changed: ' + id + ", now: " + isFavorite);
     }
   });
   </script>
