@@ -16,5 +16,5 @@ node_modules
 bower_components
 static/*
 cordova/www/*
-cordova/platoforms/ios/www/*
+cordova/platforms/ios/www/*
 .DS_Store
