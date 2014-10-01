@@ -15,8 +15,8 @@ server.pack.register([
         plugin: require("good"),
         options: {
             subscribers: {
-                console: ['ops', 'request', 'log', 'error'],
-                './tmp/logs/': ['ops', 'request', 'log', 'error']
+                console: ['ops', 'request', 'log', 'error']
+//                './tmp/logs/': ['ops', 'request', 'log', 'error']
             }
         }
     },
@@ -28,7 +28,7 @@ server.pack.register([
 	
 	if (err) throw err;
 	server.start(function() {
-	    console.log("Hapi server started @ " + server.info.uri);
+	    console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
 	});
     }
     

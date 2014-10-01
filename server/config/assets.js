@@ -48,5 +48,6 @@ var production = {
 module.exports = {
     test: development,
     development: development,
+    cordova: development,
     production: production
 }

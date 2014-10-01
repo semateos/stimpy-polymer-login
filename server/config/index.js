@@ -4,12 +4,13 @@
 var path = require('path'),
 rootPath = path.normalize(__dirname + '/../..');
 
-// Defaults that you can access when you require this config.
-module.exports = {
+console.log('node env', process.env.NODE_ENV);
+
+var config = {
     root: rootPath,
     host: '0.0.0.0',
     port: parseInt(process.env.PORT, 10) || 3000,
-    api: 'http://infinite-island-4565.herokuapp.com',
+    api: '',
     hapi: {
         options: {
             views: {
@@ -22,3 +23,18 @@ module.exports = {
         }
     }
 }
+
+switch(process.env.NODE_ENV){
+
+    case 'production':
+    case 'cordova':
+
+        config.api = 'http://localhost:3000'
+        break;
+
+}
+
+config.env = process.env.NODE_ENV;
+
+// Defaults that you can access when you require this config.
+module.exports = config;

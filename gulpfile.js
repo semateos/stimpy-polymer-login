@@ -55,6 +55,8 @@ gulp.task('default', function(){
 
 gulp.task('cordova', function(){
 
+    console.log(config);
+
     gulp.src('./public/**').pipe(gulp.dest('./cordova/www'));
 
     var server = Hapi.createServer(config.host, config.port, config.hapi.options);
