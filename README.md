@@ -50,7 +50,7 @@ Run the project on the attached device following the Apple Developer proceedure 
 
 **Bower** - Package management for the front end.  Bower uses a flat dependency tree, requiring only one version for each package, reducing page load to a minimum. [http://bower.io/](http://bower.io/)
 
-**Polymer** - Google's [Polymer Project](https://www.polymer-project.org/) is a polyfill for the upcoming Web Components standard allowing for encapsulation and sharing og new web elements.  We beleive that Web Components are the future of web development (and possibly app development).
+**Polymer** - Google's [Polymer Project](https://www.polymer-project.org/) is a polyfill for the upcoming Web Components standard allowing for encapsulation and sharing of custom web elements.  We beleive that Web Components are the future of web development (and possibly app development).
 
 **Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)  The main files of bower pacakges are automagically included in `server/config/assets.js`
 
