@@ -1,7 +1,7 @@
 Stimpy Polymer
 ==============
 
-[Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for Hapi.js backed Polymer app that works on the web or as a nativized mobile app.  It's a build of the [Polymer Tutorial](https://www.polymer-project.org/docs/start/tutorial/intro.html) but we've made it data / api backed using Hapi and demonstrated a basic Cordova build process.
+[Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for a Hapi.js backed Polymer app that works on the web or as a nativized mobile app.  It's a build of the [Polymer Tutorial](https://www.polymer-project.org/docs/start/tutorial/intro.html) demonstrating api backing and a basic Cordova build process.
 
 To install Stimpy:
 ```bash
