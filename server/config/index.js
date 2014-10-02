@@ -27,6 +27,10 @@ var config = {
 switch(process.env.NODE_ENV){
 
     case 'development':
+
+        config.api = 'http://localhost:3000'
+        break;
+        
     case 'production':
     case 'cordova':
 

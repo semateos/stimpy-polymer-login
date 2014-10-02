@@ -1,15 +1,15 @@
-Stimpy Mobile
-=============
+Stimpy Polymer
+==============
 
-[Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for Hapi.js backed app that works on the web or as a nativized mobile app.  The idea is to build one application that works as well packaged as a native app as it does on the web.  We're not quite there yet, but getting close.  Contributors welcomed with open arms and buttocks.
+[Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for Hapi.js backed Polymer app that works on the web or as a nativized mobile app.  It's a build of the [Polymer Tutorial](https://www.polymer-project.org/docs/start/tutorial/intro.html) but we've made it data / api backed using Hapi and demonstrated a basic Cordova build process.
 
 To install Stimpy:
 ```bash
 $ npm install -g stimpy supervisor bower gulp cordova
 ```
-To start a new Stimpy Mobile project
+To start a new Stimpy Polymer project
 ```bash
-$ stimpy create mobile my_new_project
+$ stimpy create polymer my_new_project
 $ cd my_new_project
 ```
 Start the local testing server by running the command:
@@ -20,18 +20,19 @@ To test the ios build:
 ```bash
 $ stimpy emulate ios
 ```
+You'll need to have the local server running at the same time that you run the iOS emulation so that it can make api calls and retreive the data.
 
 ####Device Testing
-To test on an actual device you'll probably want a live server.  We've provided a simple method for deploy your project to heroku (which has a free tier).  You'll need a [heroku login](https://signup.heroku.com/dc) and the [heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+To test on an actual device you'll need a live server.  We've provided a simple method to test deploy your project to heroku (which has a free tier).  You'll need a [heroku login](https://signup.heroku.com/dc) and the [heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
 
 To build a live test server:
 ```bash
 $ stimpy deploy heroku
 ```
 
-Edit `server/config/index.js` and replace the endpoint `api: 'http://localhost:3000'` with the new heroku server e.g. `api: 'http://sleepy-inlet-8224.herokuapp.com'`
+Edit `server/config/index.js` and replace the cordova endpoint `config.api = 'http://localhost:3000'` with the new heroku server e.g. `config.api = 'http://sleepy-inlet-8224.herokuapp.com'`
 
-Open `cordova/platforms/ios/Stimpy Mobile.xcodeproj` in Xcode.
+Open `cordova/platforms/ios/Stimpy Polymer.xcodeproj` in Xcode.
 
 Run the project on the attached device following the Apple Developer proceedure for setting up a testing device.
 
@@ -49,11 +50,11 @@ Run the project on the attached device following the Apple Developer proceedure 
 
 **Bower** - Package management for the front end.  Bower uses a flat dependency tree, requiring only one version for each package, reducing page load to a minimum. [http://bower.io/](http://bower.io/)
 
-**CSS Framework** - None. Choose your own CSS preprocessor and CSS framework.
+**Polymer** - Google's [Polymer Project](https://www.polymer-project.org/) is a polyfill for the upcoming Web Components standard allowing for encapsulation and sharing og new web elements.  We beleive that Web Components are the future of web development (and possibly app development).
 
 **Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)  The main files of bower pacakges are automagically included in `server/config/assets.js`
 
-## Plugins
+## Hapi Plugins
 The Hapi plugins that are being used.
 
 #### Dogwater
@@ -75,7 +76,7 @@ There are two main folders in the stack. The "**public**" folder for front-end (
 
 [Sam Mateosian](https://github.com/semateos)
 
-Based on hapi-ninja from [Saul Maddox](https://github.com/poeticninja)
+Based on [polymer-tutorial](https://github.com/Polymer/polymer-tutorial) and in part on hapi-ninja from [Saul Maddox](https://github.com/poeticninja)
 and, [sample-hapi-rest-api](https://github.com/agendor/sample-hapi-rest-api)
 
 

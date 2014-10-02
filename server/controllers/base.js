@@ -13,7 +13,7 @@ module.exports = {
             
                 // Render the view with the custom greeting to Stimpy
                 reply.view('index', {
-                    title: cat.name + ', you eediot!'
+                    title: cat.name + ' Polymer'
                 });
                 
             });
