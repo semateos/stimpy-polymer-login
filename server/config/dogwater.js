@@ -24,56 +24,56 @@ module.exports = {
             id: 1,
             text : "Have you heard about the Web Components revolution?",
             username : "Eric",
-            avatar : config.api + "/images/avatar-01.svg",
+            avatar : 1,
             favorite: false
           },
           {
             id: 2,
             text : "Loving this Polymer thing.",
             username : "Rob",
-            avatar : config.api + "/images/avatar-02.svg",
+            avatar : 2,
             favorite: false
           },
             {
             id: 3,
             text : "So last year...",
             username : "Dimitri",
-            avatar : config.api + "/images/avatar-03.svg",
+            avatar : 3,
             favorite: false
           },
           {
             id: 4,
             text : "Pretty sure I came up with that first.",
             username : "Ada",
-            avatar : config.api + "/images/avatar-07.svg",
+            avatar : 4,
             favorite: false
           },
           {
             id: 5,
             text : "Yo, I heard you like components, so I put a component in your component.",
             username : "Grace",
-            avatar : config.api + "/images/avatar-08.svg",
+            avatar : 6,
             favorite: false
           },
           {
             id: 6,
             text : "Centralize, centrailize.",
             username : "John",
-            avatar : config.api + "/images/avatar-04.svg",
+            avatar : 11,
             favorite: false
           },
           {
             id: 7,
             text : "Has anyone seen my cat?",
             username : "Zelda",
-            avatar : config.api + "/images/avatar-06.svg",
+            avatar : 7,
             favorite: false
           },
           {
             id: 8,
             text : "Decentralize!",
             username : "Norbert",
-            avatar : config.api + "/images/avatar-05.svg",
+            avatar : 5,
             favorite: false
           }
         ]

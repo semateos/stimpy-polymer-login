@@ -1,6 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon/core-icon.html">
 <link rel="import" href="post-service.html">
 <link rel="import" href="post-card.html">
+<link rel="import" href="avatars.html">
 
 <polymer-element name="post-list" attributes="show">
   <template>
@@ -12,6 +14,17 @@
     post-card {
       margin-bottom: 30px;
     }
+
+    .topeka-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      margin-right: 10px;
+    }
     </style>
 
     <post-service id="service" posts="{{posts}}"></post-service>
@@ -22,7 +35,7 @@
           favorite="{{post.favorite}}"
           on-favorite-tap="{{handleFavorite}}"
           hidden?="{{show == 'favorites' && !post.favorite}}">
-          <img src="{{post.avatar}}" width="70" height="70">
+          <avatar><core-icon icon="avatars:avatar-{{post.avatar ? post.avatar : 12}}" class="topeka-avatar"></core-icon></avatar>
           <h2>{{post.username}}</h2>
           <p>{{post.text}}</p>
         </post-card>
