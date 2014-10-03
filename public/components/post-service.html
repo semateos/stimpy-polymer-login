@@ -61,7 +61,6 @@
       handleAs="json">
     </stimpy-ajax>
     <stimpy-ajax id="ajaxfav"
-      auto
       url="/api/favorite"
       handleAs="json">
     </stimpy-ajax>
@@ -91,7 +90,7 @@
         
       this.$.ajaxfav.url = window.api + this.fav_url + '/' + id + '/' + isFavorite;
 
-      //this.$.ajax.go();
+      this.$.ajaxfav.go();
 
       console.log('Favorite changed: ' + id + ", now: " + isFavorite);
     }
