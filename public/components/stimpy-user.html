@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="avatars.html">
+
+<polymer-element name="stimpy-user" attributes="user on-tap" touch-action="none" on-tap="{{tapHandler}}">
+  <template >
+    <style>
+    :host {
+      display: block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  
+    .username{
+      font-size: 0.8em;
+      margin-right: 8px;
+    }
+
+    .topeka-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    </style>
+  
+    <span class="username">{{user ? user.name : 'Sign In'}}</span>
+    <core-icon icon="avatars:avatar-{{user ? user.avatar : 12}}" class="topeka-avatar"></core-icon>
+
+  </template>
+
+  <script>
+  Polymer({
+    tapHandler: function(e){
+      this.fire('user-tapped');
+    }
+  });
+  </script>
+</polymer-element>

@@ -1,82 +1,66 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
-<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
-<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
-<link rel="import" href="post-list.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
 
-<polymer-element name="stimpy-app">
+<link rel="import" href="stimpy-posts.html">
+<link rel="import" href="stimpy-profile.html">
+
+<polymer-element name="stimpy-app" attributes="user">
+
   <template>
+
     <style>
 
-      core-header-panel {
-        height: 100%;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-      }
 
-      core-header-panel {
-        height: 100%;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch; 
-      }
-
-      core-toolbar {
-        background: #03a9f4;
-        color: white;
-        width: 100%;
-      }
-
-      #tabs {
-        width: 50%;
-        margin: 0;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        text-transform: uppercase;
-        -webkit-perspective: 1000;
-        -webkit-backface-visibility: hidden;
-      }
-
-      .container {
-        margin: 50px;
-      }
-      
     </style>
+	
+	<core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
+		
+		<stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
 
-    <core-header-panel>
+		<stimpy-profile id="profile" user="{{user}}" fit></stimpy-profile>
 
-      <core-toolbar>
-        
-        <paper-tabs id="tabs" selected="all" self-end>
-            <paper-tab name="all">All</paper-tab>
-            <paper-tab name="favorites">Favorites</paper-tab>
-        </paper-tabs>
-        
-        <div flex></div>
-
-      </core-toolbar>
-
-      <div class="container" layout vertical center>
-        <post-list id="list" show="all"></post-list>
-      </div>
-
-    </core-header-panel>
+	</core-animated-pages>
 
   </template>
+
   <script>
 
-    Polymer({
-      
-      ready: function(){
-        var tabs = this.$.tabs;
-        var list = this.$.list;
+    Polymer('stimpy-app', {
+     	
+    	selected: 'posts',
 
-        tabs.addEventListener('core-select', function() {
-          list.show = tabs.selected;
-        });
-      }
+    	observe: {
+
+    		user: 'userUpdated'
+    	},
+
+		ready: function(){
+
+			console.log('stimpy-app ready');
+		},
+
+		userUpdated: function(){
+
+			this.selected = 'posts';
+		},
+
+		userTapped: function(){
+
+			console.log('user tapped bubble');
+
+			this.selected = 'profile';
+		}
     });
 
   </script>
