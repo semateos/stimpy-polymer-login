@@ -116,6 +116,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     handleAs="json"
     on-core-response="{{handleLoginResponse}}">
   </stimpy-ajax>
+  
+  <stimpy-ajax id="ajaxLogout"
+    url="/api/logout"
+    method="POST"
+    handleAs="json"
+    on-core-response="{{handleLogoutResponse}}">
+  </stimpy-ajax>
 
   <div class="bg" fit dummy vertical layout center cross-fade></div>
 
@@ -187,12 +194,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     handleLogin: function() {
-      
-      /*this.user = {
-        name: this.$.first.value + ' ' + this.$.last.value.substring(0,1),
-        score: this.score || 0
-      };*/
-
+    
       var params = {username: this.$.email.value, password: this.$.password.value}
 
       this.$.ajax.params = JSON.stringify(params);
@@ -204,14 +206,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     handleLoginResponse: function(e){
 
-      console.log(this.$.ajax.response);
+      var response = this.$.ajax.response;
+
+      console.log(response);
+
+      this.user = response.user;
     },
 
-
     handleLogout: function() {
+      this.$.ajaxLogout.go();
       this.user = null;
       this.userDefaults = null;
-    }
+    },
+
+    handleLogoutResponse: function(e){
+
+      var response = this.$.ajaxLogout.response;
+
+      console.log(response);
+    },
 
   });
 

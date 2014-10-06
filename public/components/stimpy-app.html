@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
 
+<link rel="import" href="stimpy-ajax.html">
 <link rel="import" href="stimpy-posts.html">
 <link rel="import" href="stimpy-login.html">
 
@@ -28,6 +29,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		
     </style>
 	
+	<stimpy-ajax id="ajax"
+		auto
+	    url="/api/user"
+	    method="POST"
+	    handleAs="json"
+	    on-core-response="{{handleUserResponse}}">
+ 	</stimpy-ajax>
+
 	<core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
 		
 		<stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
@@ -64,6 +73,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			console.log('user tapped bubble');
 
 			this.selected = 'login';
+		},
+
+		handleUserResponse: function(e){
+
+			var response = this.$.ajax.response;
+
+	    	console.log(response);
+
+	    	this.user = response.user;
+
 		}
     });
 

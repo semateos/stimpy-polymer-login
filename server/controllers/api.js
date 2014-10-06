@@ -129,11 +129,33 @@ module.exports = {
         }
     },
 
+
+    user: {
+
+        handler: function (request, reply) {
+
+            if (request.auth.isAuthenticated) {
+                return reply({loggedIn: true, user: request.auth.credentials.user});
+            }
+
+            return reply({loggedIn: false});
+        },
+        auth: {
+            mode: 'try',
+            strategy: 'session'
+        },
+        plugins: {
+            'hapi-auth-cookie': {
+                redirectTo: false
+            }
+        }
+    },
+
     login: {
         handler: function (request, reply) {
 
             if (request.auth.isAuthenticated) {
-                return {loggedIn: true}
+                return reply({loggedIn: true, user: request.auth.credentials.user});
             }
             
             var message = '';
@@ -157,7 +179,7 @@ module.exports = {
                         // This line below is specific to hapi-auth-cookie
                         request.auth.session.set(creds);
                         
-                        return reply({loggedIn: true, creds: creds});
+                        return reply({loggedIn: true, user: creds.user});
                     });
                 }
                 
@@ -178,5 +200,26 @@ module.exports = {
                 redirectTo: false
             }
         }
+    },
+
+    logout: {
+        handler: function (request, reply) {
+
+            request.auth.session.clear();
+
+            return reply({loggedIn: false});
+        },
+        auth: {
+            mode: 'try',
+            strategy: 'session'
+        },
+        plugins: {
+            'hapi-auth-cookie': {
+                redirectTo: false
+            }
+        }
     }
+
+
+
 }
