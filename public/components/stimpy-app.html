@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
 
 <link rel="import" href="stimpy-posts.html">
-<link rel="import" href="stimpy-profile.html">
+<link rel="import" href="stimpy-login.html">
 
 <polymer-element name="stimpy-app" attributes="user">
 
@@ -32,7 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		
 		<stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
 
-		<stimpy-profile id="profile" user="{{user}}" fit></stimpy-profile>
+		<stimpy-login id="login" user="{{user}}" fit></stimpy-profile>
 
 	</core-animated-pages>
 
@@ -63,7 +63,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			console.log('user tapped bubble');
 
-			this.selected = 'profile';
+			this.selected = 'login';
 		}
     });
 
