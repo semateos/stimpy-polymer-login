@@ -4,7 +4,7 @@
 <link rel="import" href="post-card.html">
 <link rel="import" href="avatars.html">
 
-<polymer-element name="post-list" attributes="show">
+<polymer-element name="post-list" attributes="show load">
   <template>
     <style>
     :host {
@@ -44,6 +44,12 @@
 
   <script>
   Polymer({
+
+    load: function(type){
+      this.$.service.reload();
+      this.show = type;
+    },
+
     handleFavorite: function(event, detail, sender) {
       var post = sender.templateInstance.model.post;
       this.$.service.setFavorite(post.id, post.favorite);

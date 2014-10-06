@@ -47,7 +47,7 @@
   @type Array
   @default []
 -->
-<polymer-element name="post-service" attributes="posts">
+<polymer-element name="post-service" attributes="posts reload">
   <template>
     <style>
     :host {
@@ -70,6 +70,9 @@
     created: function() {
       this.posts = [];
       this.fav_url = '/api/favorite';
+    },
+    reload: function(){
+      this.$.ajax.go();
     },
     postsLoaded: function() {
       // Make a copy of the loaded data
