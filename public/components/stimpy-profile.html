@@ -19,7 +19,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <template>
   
   <style>
-  
+    
+    :host{
+      -webkit-touch-callout: none;
+    }
+
     core-toolbar {
       background-color: none;
     }
@@ -63,6 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       overflow: hidden;
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
+      -webkit-touch-callout: none;
     }
 
     .avatar-wrapper {
