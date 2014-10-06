@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
 
+<link rel="import" href="stimpy-ajax.html">
 
 <polymer-element name="stimpy-login" attributes="user userDefaults wide" center layout vertical>
 
@@ -109,6 +110,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </style>
   
+  <stimpy-ajax id="ajax"
+    url="/api/login"
+    method="POST"
+    handleAs="json"
+    on-core-response="{{handleLoginResponse}}">
+  </stimpy-ajax>
+
   <div class="bg" fit dummy vertical layout center cross-fade></div>
 
   <div class="main" layout vertical cross-fade-delayed?="{{parentElement.lastSelected === 'splash'}}">
@@ -185,9 +193,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         score: this.score || 0
       };*/
 
-      console.log('logging in');
+      var params = {username: this.$.email.value, password: this.$.password.value}
 
+      this.$.ajax.params = JSON.stringify(params);
+
+      this.$.ajax.go();
+
+      console.log('logging in', this.$.ajax.params);
     },
+
+    handleLoginResponse: function(e){
+
+      console.log(this.$.ajax.response);
+    },
+
 
     handleLogout: function() {
       this.user = null;

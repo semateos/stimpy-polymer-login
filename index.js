@@ -33,10 +33,19 @@ exports.register = function(plugin, options, next) {
 	    // Make sure DB is available
 	    plugin.dependency('dogwater');
 	    
+	    plugin.auth.strategy('session', 'cookie', {
+	        password: 'secret',
+	        cookie: 'sid-example',
+	        redirectTo: '/login',
+	        isSecure: false
+	    });
+
 	    plugin.route(require('./server/routes'));
 	    
 	    plugin.views(config.hapi.options.views);
 	    
+	    
+
 	    next();
 	    
 	});

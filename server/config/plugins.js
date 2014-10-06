@@ -12,5 +12,8 @@ module.exports = [
     },
     {
         plugin: require("hapi-cache-buster")
+    },
+    {
+        plugin: require('hapi-auth-cookie')
     }
 ];
