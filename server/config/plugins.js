@@ -15,5 +15,8 @@ module.exports = [
     },
     {
         plugin: require('hapi-auth-cookie')
+    },
+    {
+        plugin: require('hapi-yarn-user')
     }
 ];
