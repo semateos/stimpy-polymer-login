@@ -14,9 +14,9 @@ module.exports = [
         plugin: require("hapi-cache-buster")
     },
     {
-        plugin: require('hapi-auth-cookie')
+        plugin: require("hapi-auth-cookie")
     },
-    {
-        plugin: require('hapi-yarn-user')
+    { 
+        plugin: require("hapi-yarn-user")
     }
 ];

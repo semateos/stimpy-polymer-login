@@ -111,14 +111,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   
   <stimpy-ajax id="ajax"
-    url="/api/login"
+    url="/api/user/login"
     method="POST"
     handleAs="json"
     on-core-response="{{handleLoginResponse}}">
   </stimpy-ajax>
   
   <stimpy-ajax id="ajaxLogout"
-    url="/api/logout"
+    url="/api/user/logout"
     method="POST"
     handleAs="json"
     on-core-response="{{handleLogoutResponse}}">

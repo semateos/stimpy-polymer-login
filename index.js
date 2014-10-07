@@ -7,8 +7,6 @@ var Hoek = require('hoek');
 // Server Config
 var config = require('./server/config');
 
-// Hapi Server Plugins
-var plugins = require('./server/config/plugins');
 
 exports.register = function(plugin, options, next) {
 
@@ -26,29 +24,14 @@ exports.register = function(plugin, options, next) {
 
     });
 
-	plugin.register(plugins, function(err) {
-	    
-	    if (err) throw err;
-	    
-	    // Make sure DB is available
-	    plugin.dependency('dogwater');
-	    
-	    plugin.auth.strategy('session', 'cookie', {
-	        password: 'secret',
-	        cookie: 'sid-example',
-	        redirectTo: '/login',
-	        isSecure: false
-	    });
+	// Make sure DB is available
+    plugin.dependency('dogwater');
 
-	    plugin.route(require('./server/routes'));
-	    
-	    plugin.views(config.hapi.options.views);
-	    
-	    
-
-	    next();
-	    
-	});
+    plugin.route(require('./server/routes'));
+    
+    plugin.views(config.hapi.options.views);
+    
+    next();
     
 };
 
