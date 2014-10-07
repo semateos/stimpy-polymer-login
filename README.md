@@ -1,5 +1,5 @@
-Stimpy Polymer
-==============
+Stimpy Polymer with Login
+=========================
 
 [Stimpy](https://github.com/semateos/stimpy) is a simple yet inventive fellow.  This is a boilerplate for a Hapi.js backed Polymer app that works on the web or as a nativized mobile app.  It's a build of the [Polymer Tutorial](https://www.polymer-project.org/docs/start/tutorial/intro.html) demonstrating api backing and a basic Cordova build process.
 
@@ -7,9 +7,9 @@ To install Stimpy:
 ```bash
 $ npm install -g stimpy supervisor bower gulp cordova
 ```
-To start a new Stimpy Polymer project
+To start a new Stimpy Polymer-Login project
 ```bash
-$ stimpy create polymer my_new_project
+$ stimpy create polymer-login my_new_project
 $ cd my_new_project
 ```
 Start the local testing server by running the command:
