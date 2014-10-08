@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/core-icon/core-icon.html">
 <link rel="import" href="post-service.html">
 <link rel="import" href="post-card.html">
+<link rel="import" href="post-compose.html">
 <link rel="import" href="avatar-icon.html">
 
 <polymer-element name="post-list" attributes="show load">
@@ -11,13 +12,12 @@
       display: block;
       width: 100%;
     }
+    post-compose,
     post-card {
       margin-bottom: 30px;
     }
 
     .avatar {
-      width: 60px;
-      height: 60px;
       margin-right: 10px;
     }
     </style>
@@ -25,6 +25,7 @@
     <post-service id="service" posts="{{posts}}"></post-service>
     
     <div layout vertical center>
+      <post-compose id="compose" user={{user}}></post-compose>
       <template repeat="{{post in posts}}">
         <post-card
           favorite="{{post.favorite}}"
