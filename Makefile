@@ -1,7 +1,7 @@
 test:
 	@node node_modules/lab/bin/lab -I inspect
 test-cov:
-	@node node_modules/lab/bin/lab -I inspect -t 100
+	@node node_modules/lab/bin/lab -I inspect -t 100 -m 10000
 test-cov-html:
 	@node node_modules/lab/bin/lab -I inspect -r html -o coverage.html
 

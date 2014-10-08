@@ -128,4 +128,34 @@ experiment('stimpy-medium', function () {
 
     });
 
+    
+    //example phantom.js browser test using nightmare.js wrapper
+    /*
+    var Nightmare = require('nightmare');
+    
+    test('yahoo search test', function(done){
+
+        new Nightmare()
+          .goto('http://yahoo.com')
+          .type('input[title="Search"]', 'github nightmare')
+          .click('.searchsubmit')
+          .wait()
+          .evaluate(function() {
+
+            var main = document.querySelector('div.res h3 a');
+
+            return main.innerText;
+
+          }, function(result){
+
+            //console.log(result);
+
+            Lab.expect(result).to.contain('segmentio/nightmare')
+
+            done();
+
+          }).run();
+    });
+    */
+   
 });
