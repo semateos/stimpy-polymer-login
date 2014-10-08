@@ -4,7 +4,7 @@
 <link rel="import" href="avatar-icon.html">
 <link rel="import" href="stimpy-ajax.html">
 
-<polymer-element name="post-compose" attributes="user">
+<polymer-element name="post-compose" attributes="user posts">
   <template>
     <style>
     :host {
@@ -28,9 +28,7 @@
       width: 36px;
       right: 15px;
       bottom: 25px;
-      
     }
-    
 
     .avatar{
       margin-right: 15px;  
@@ -59,7 +57,7 @@
     <div layout horizontal>
 
       <avatar-icon class="avatar" avatar="{{user.avatar}}"></avatar-icon>
-      <paper-input multiline label="What's on your mind?" id="post" flex></paper-input>
+      <paper-input multiline label="What's on your mind?" id="post" on-keypress="{{ keypressAction }}"flex></paper-input>
       <core-icon-button
         id="send"
         icon="send"
@@ -72,15 +70,36 @@
   </template>
   <script>
   Polymer({
+
+    keypressAction: function(event){
+
+    },
     
     sendPost: function(event, detail, sender) {
 
+      this.$.post.blur();
+
       console.log(this.$.post.value);
+
+      this.$.ajax.params = {
+        post: this.$.post.value
+      }
+
+      this.$.ajax.go();
+
+      this.$.post.value = null;
     },
 
     postResponse: function(event){
 
-      
+      console.log(this.$.ajax.response);
+
+      var response = this.$.ajax.response;
+
+      if(response.success){
+
+        this.posts = [response.post].concat(this.posts);
+      }
     }
 
   });

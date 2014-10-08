@@ -11,5 +11,10 @@ module.exports = [
         method: 'GET',
         path: '/api/posts',
         config: controller.posts
-    }
+    },
+    {
+        method: ['GET', 'POST'],
+        path: '/api/post',
+        config: controller.post
+    },
 ]
