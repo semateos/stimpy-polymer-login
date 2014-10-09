@@ -9,8 +9,6 @@
 
       		this.url = window.api + this.url;
       	}
-      	
-      	//console.log('ajax ready: ', this.url);
 
         this.super();
       },
@@ -22,7 +20,7 @@
         if (xhr === this.activeRequest) {
           this.error = response;
         }
-        
+
         this.fire('core-error', {response: response, xhr: xhr});
       }
 

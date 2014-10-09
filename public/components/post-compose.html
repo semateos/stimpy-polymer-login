@@ -34,6 +34,8 @@
     .avatar{
       margin-right: 15px;  
       vertical-align: top;
+      width: 45px;
+      height: 45px;
     }
 
     #post {
@@ -77,19 +79,6 @@
   <script>
   Polymer({
 
-
-    postError: function(event){
-
-      var error = this.$.ajax.error;
-
-      console.log(typeof error, error);
-
-      this.$.error.text = error.error;
-
-      this.$.error.show();
-
-    },
-
     keypressAction: function(event){
 
     },
@@ -104,10 +93,20 @@
         post: this.$.post.value
       }
 
-      this.$.ajax.go();      
+      this.$.ajax.go();    
     },
 
-    
+    postError: function(event){
+
+      var error = this.$.ajax.error;
+
+      console.log(typeof error, error);
+
+      this.$.error.text = error.error;
+
+      this.$.error.show();
+
+    },
 
     postResponse: function(event){
 
