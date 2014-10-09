@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="avatar-icon.html">
 <link rel="import" href="stimpy-ajax.html">
 
@@ -37,8 +38,10 @@
 
     #post {
       vertical-align: bottom;
-      min-height: 45px;
-      padding: 0;
+      min-height: 38px;
+      padding: 7px 0 0 0;
+      font-size: 0.8em;
+      line-height: 1em;
     }
 
     #post::shadow textarea{
@@ -53,11 +56,13 @@
       handleAs="json"
       on-core-response="{{postResponse}}">
     </stimpy-ajax>
+    
+    <paper-toast id="error" role="alert" text="Post Failed."></paper-toast>
 
     <div layout horizontal>
 
       <avatar-icon class="avatar" avatar="{{user.avatar}}"></avatar-icon>
-      <paper-input multiline label="What's on your mind?" id="post" on-keypress="{{ keypressAction }}"flex></paper-input>
+      <paper-input multiline label="What's up buttercup?" id="post" on-keypress="{{ keypressAction }}"flex></paper-input>
       <core-icon-button
         id="send"
         icon="send"
@@ -85,9 +90,7 @@
         post: this.$.post.value
       }
 
-      this.$.ajax.go();
-
-      this.$.post.value = null;
+      this.$.ajax.go();      
     },
 
     postResponse: function(event){
@@ -96,7 +99,14 @@
 
       var response = this.$.ajax.response;
 
-      if(response.success){
+      if(response.err){
+
+        this.$.error.text = response.err;
+        this.$.error.show();
+
+      }else if(response.success){
+
+        this.$.post.value = null;
 
         this.posts = [response.post].concat(this.posts);
       }

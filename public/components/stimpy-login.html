@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
 <link rel="import" href="stimpy-ajax.html">
 
@@ -123,6 +124,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     handleAs="json"
     on-core-response="{{handleLogoutResponse}}">
   </stimpy-ajax>
+  
+  <paper-toast id="error" role="alert" text="Login Unsuccessful."></paper-toast>
 
   <div class="bg" fit dummy vertical layout center cross-fade></div>
 
@@ -210,7 +213,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       console.log(response);
 
-      this.user = response.user;
+      if(response.err){
+
+        this.$.error.text = response.err;
+        this.$.error.show();
+
+      }else if(response.user){
+
+        console.log('here');
+
+        this.user = response.user;
+      
+      }else{
+
+        this.$.error.show();
+      }
     },
 
     handleLogout: function() {
