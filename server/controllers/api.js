@@ -51,7 +51,7 @@ module.exports = {
                     text: request.payload.post 
 
                 }, function(err, post){
-
+                    
                     if(err){
 
                         return reply({err: err});
@@ -69,7 +69,6 @@ module.exports = {
             
         },
         auth: {
-            mode: 'try',
             strategy: 'session'
         },
         plugins: {

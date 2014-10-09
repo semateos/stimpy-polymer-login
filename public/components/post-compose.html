@@ -54,7 +54,8 @@
       url="/api/post"
       method="POST"
       handleAs="json"
-      on-core-response="{{postResponse}}">
+      on-core-response="{{postResponse}}"
+      on-core-error="{{postError}}">
     </stimpy-ajax>
     
     <paper-toast id="error" role="alert" text="Post Failed."></paper-toast>
@@ -76,6 +77,19 @@
   <script>
   Polymer({
 
+
+    postError: function(event){
+
+      var error = this.$.ajax.error;
+
+      console.log(typeof error, error);
+
+      this.$.error.text = error.error;
+
+      this.$.error.show();
+
+    },
+
     keypressAction: function(event){
 
     },
@@ -92,6 +106,8 @@
 
       this.$.ajax.go();      
     },
+
+    
 
     postResponse: function(event){
 
