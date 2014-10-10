@@ -34,7 +34,7 @@ switch(process.env.NODE_ENV){
     case 'production':
     case 'cordova':
 
-        config.api = 'http://localhost:3000'
+        config.api = 'http://quiet-mesa-6846.herokuapp.com'
         break;
 
 }

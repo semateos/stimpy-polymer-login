@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bigroomstudios.stimpypolymer" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Stimpy Polymer</name>
+<widget id="com.stimpy.polymer" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>StimpyPolymerLogin</name>
     <description>
-        A sample Stimpy Polymer app
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="sam@bigroomstudios.com" href="http://bigroomstudios.com">
-        Big Room Studios
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="TopActivityIndicator" value="white"/>
 </widget>
