@@ -19,88 +19,88 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
 
     <style>
-		
-		:host{
-			transform: translateZ(0);
-		}
+    
+    :host{
+      transform: translateZ(0);
+    }
 
     </style>
-	
-	<stimpy-ajax id="ajax"
-		auto
-	    url="/api/user"
-	    method="POST"
-	    handleAs="json"
-	    on-core-response="{{handleUserResponse}}">
- 	</stimpy-ajax>
-	
-	<app-router id="router">
+  
+  <stimpy-ajax id="ajax"
+    auto
+      url="/api/user"
+      method="POST"
+      handleAs="json"
+      on-core-response="{{handleUserResponse}}">
+  </stimpy-ajax>
+  
+  <app-router id="router">
       <app-route path="/" import="../pages/stimpy-posts.html" 
-      	on-activate-route-end="{{onRouteActivate}}"></app-route>
+        on-activate-route-end="{{onRouteActivate}}"></app-route>
 
       <app-route path="/login" import="../pages/stimpy-login.html" 
-      	on-activate-route-end="{{onRouteActivate}}"></app-route>
+        on-activate-route-end="{{onRouteActivate}}"></app-route>
     </app-router>
 
 
-	<!--
-	<core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
-		
-		<stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
+  <!--
+  <core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
+    
+    <stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
 
-		<stimpy-login id="login" user="{{user}}" fit></stimpy-login>
+    <stimpy-login id="login" user="{{user}}" fit></stimpy-login>
 
-	</core-animated-pages>
-	-->
+  </core-animated-pages>
+  -->
   </template>
 
   <script>
 
     Polymer('stimpy-app', {
-     	
-    	observe: {
+      
+      observe: {
 
-    		user: 'userUpdated'
-    	},
+        user: 'userUpdated'
+      },
 
-		ready: function(){
+      ready: function(){
 
-			console.log('stimpy-app ready');
-		},
+        console.log('stimpy-app ready');
+      },
 
-		userUpdated: function(){
+      userUpdated: function(){
 
-			console.log('userUpdated');
+        console.log('userUpdated');
 
-			this.$.router.go('/');
-		},
+        this.$.router.go('/');
+      },
 
-		userTapped: function(){
+      userTapped: function(){
 
-			console.log('user tapped bubble');
+        console.log('user tapped bubble');
 
-			this.$.router.go('/login');
-		},
+        this.$.router.go('/login');
+      },
 
-		handleUserResponse: function(e){
+      handleUserResponse: function(e){
 
-			var response = this.$.ajax.response;
+        var response = this.$.ajax.response;
 
-	    	console.log(response);
+          console.log(response);
 
-	    	this.user = response.user;
-		},
+          this.user = response.user;
+      },
 
-		onRouteActivate: function(e){
+      onRouteActivate: function(e){
 
-			var activeElement = this.$.router.activeRouteContent.firstChild;
+        var activeElement = this.$.router.activeRouteContent.firstChild;
 
-			console.log('active element', activeElement);
+        console.log('active element', activeElement);
 
-			activeElement.router = this.$.router;
+        activeElement.router = this.$.router;
 
-			activeElement.bind('user', new PathObserver(this.user));
-		}
+        activeElement.bind('user', new PathObserver(this.user));
+      }
     });
 
   </script>
