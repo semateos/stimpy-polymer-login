@@ -29,7 +29,7 @@ exports.register = function(plugin, options, next) {
 
     plugin.route(require('./server/routes'));
     
-    plugin.views(config.hapi.options.views);
+    plugin.views(config.views);
     
     next();
     

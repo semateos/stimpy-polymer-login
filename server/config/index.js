@@ -13,13 +13,13 @@ var config = {
     api: '',
     hapi: {
         options: {
-            views: {
-                path: rootPath + '/server/views',
-                engines: {
-                    html: require('swig')
-                }
-            },
             cors: true
+        }
+    },
+    views: {
+        path: rootPath + '/server/views',
+        engines: {
+            html: require('swig')
         }
     }
 }
