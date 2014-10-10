@@ -31,5 +31,10 @@ module.exports = [
         method: 'GET',
         path: '/components/{path*}',
         config: controller.components
+    },
+    {
+        method: 'GET',
+        path: '/pages/{path*}',
+        config: controller.pages
     }
 ]

@@ -9,12 +9,7 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/login',
-        config: controller.index
-    },
-    {
-        method: 'GET',
         path: '/{path*}',
-        config: controller.missing
+        config: controller.index
     }
 ]

@@ -9,14 +9,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
-<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../bower_components/app-router/src/app-router.html">
 
 <link rel="import" href="stimpy-ajax.html">
-<link rel="import" href="stimpy-posts.html">
-<link rel="import" href="stimpy-login.html">
 
-<polymer-element name="stimpy-app" attributes="user">
+
+<polymer-element name="stimpy-app" attributes="user selected">
 
   <template>
 
@@ -26,7 +24,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			transform: translateZ(0);
 		}
 
-		
     </style>
 	
 	<stimpy-ajax id="ajax"
@@ -36,7 +33,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	    handleAs="json"
 	    on-core-response="{{handleUserResponse}}">
  	</stimpy-ajax>
+	
+	<app-router id="router">
+      <app-route path="/" import="../pages/stimpy-posts.html" 
+      	on-activate-route-end="{{onRouteActivate}}"></app-route>
 
+      <app-route path="/login" import="../pages/stimpy-login.html" 
+      	on-activate-route-end="{{onRouteActivate}}"></app-route>
+    </app-router>
+
+
+	<!--
 	<core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
 		
 		<stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
@@ -44,15 +51,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<stimpy-login id="login" user="{{user}}" fit></stimpy-login>
 
 	</core-animated-pages>
-
+	-->
   </template>
 
   <script>
 
     Polymer('stimpy-app', {
      	
-    	selected: 'posts',
-
     	observe: {
 
     		user: 'userUpdated'
@@ -65,14 +70,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 		userUpdated: function(){
 
-			this.selected = 'posts';
+			console.log('userUpdated');
+
+			this.$.router.go('/');
 		},
 
 		userTapped: function(){
 
 			console.log('user tapped bubble');
 
-			this.selected = 'login';
+			this.$.router.go('/login');
 		},
 
 		handleUserResponse: function(e){
@@ -82,7 +89,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	    	console.log(response);
 
 	    	this.user = response.user;
+		},
 
+		onRouteActivate: function(e){
+
+			var activeElement = this.$.router.activeRouteContent.firstChild;
+
+			console.log('active element', activeElement);
+
+			activeElement.router = this.$.router;
+
+			activeElement.bind('user', new PathObserver(this.user));
 		}
     });
 

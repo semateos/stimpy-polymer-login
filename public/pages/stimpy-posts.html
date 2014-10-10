@@ -5,8 +5,8 @@
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/pushstate-anchor/pushstate-anchor.html">
 
-<link rel="import" href="post-list.html">
-<link rel="import" href="stimpy-user.html">
+<link rel="import" href="../components/post-list.html">
+<link rel="import" href="../components/stimpy-user.html">
 
 <polymer-element name="stimpy-posts" attributes="user">
   <template>
@@ -57,6 +57,11 @@
       stimpy-user{
         cursor: pointer;
       }
+
+      a{
+        text-decoration: none;
+        color: #fff;
+      }
       
     </style>
 
@@ -71,8 +76,7 @@
         
         <div flex></div>
 
-        <a is="pushstate-anchor" href="/login">login</a>
-        <stimpy-user id="userButton" user="{{user}}"></user>
+        <a is="pushstate-anchor" href="/login"><stimpy-user id="userButton" user="{{user}}"></user></a>
 
       </core-toolbar>
 
@@ -98,12 +102,11 @@
           self.$.list.load(tabs.selected);
         });
 
-        /*userButton.addEventListener('user-tapped', function(e){
+        userButton.addEventListener('user-tapped', function(e){
 
           console.log('my user tapped');
           this.fire(e);
-
-        })*/
+        })
       }
     });
 

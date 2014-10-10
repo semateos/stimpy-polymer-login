@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
-<link rel="import" href="stimpy-ajax.html">
+<link rel="import" href="../components/stimpy-ajax.html">
 
 <polymer-element name="stimpy-login" attributes="user userDefaults wide" center layout vertical>
 
@@ -223,8 +223,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         console.log('here');
 
         this.user = response.user;
-
-        this.router.go('/');
       
       }else{
 
@@ -243,7 +241,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var response = this.$.ajaxLogout.response;
 
       console.log(response);
-    }
+    },
 
   });
 

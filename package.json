@@ -23,7 +23,7 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "start": "supervisor -e html,js -i public/components server",
+    "start": "supervisor -e html,js -i public server",
     "postinstall": "bower install",
     "test": "make test-cov"
   },

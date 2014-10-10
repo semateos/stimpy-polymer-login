@@ -32,5 +32,10 @@ module.exports = {
         handler: {
             directory: { path: rootPath + '/public/components' }
         }
+    },
+    pages: {
+        handler: {
+            directory: { path: rootPath + '/public/pages' }
+        }
     }
 }
