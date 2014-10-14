@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   
   <stimpy-ajax id="ajax"
-    auto
+      auto
       url="/api/user"
       method="POST"
       handleAs="json"
@@ -35,12 +35,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </stimpy-ajax>
   
   <app-router id="router">
-      <app-route path="/" import="../pages/stimpy-posts.html" 
-        on-activate-route-end="{{onRouteActivate}}"></app-route>
+    <app-route path="/" import="../pages/stimpy-posts.html" 
+      on-activate-route-end="{{onRouteActivate}}"></app-route>
 
-      <app-route path="/login" import="../pages/stimpy-login.html" 
-        on-activate-route-end="{{onRouteActivate}}"></app-route>
-    </app-router>
+    <app-route path="/login" import="../pages/stimpy-login.html" 
+      on-activate-route-end="{{onRouteActivate}}"></app-route>
+  </app-router>
 
 
   <!--
@@ -73,6 +73,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         console.log('userUpdated');
 
         this.$.router.go('/');
+
+        /*
+          var currentPath = this.$.router.activeRoute.getAttribute('path');
+
+          if(currentPath != '/'){
+
+          this.$.router.go('');
+        }*/
       },
 
       userTapped: function(){
@@ -93,13 +101,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       onRouteActivate: function(e){
 
+        var self = this;
+
         var activeElement = this.$.router.activeRouteContent.firstChild;
 
         console.log('active element', activeElement);
 
-        activeElement.router = this.$.router;
+        activeElement.addEventListener('ready', function(e){
 
-        activeElement.bind('user', new PathObserver(this.user));
+          console.log('active element ready', this);
+
+          this.bind('user', new PathObserver(self.user));
+          self.bind('user', new PathObserver(this.user));
+
+        });
+
+
+        //activeElement.bind('user', new PathObserver(this.user));
       }
     });
 

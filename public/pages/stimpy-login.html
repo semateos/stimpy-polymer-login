@@ -175,9 +175,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     ready: function() {
+
+      console.log('stimpy-login ready');
+
+      this.cancelUnbindAll();
+
+      this.fire('ready', {});
+      
       if (!this.user) {
         this.selectRandomAvatar();
       }
+    },
+
+    detached: function(){
+
+      this.cancelUnbindAll();
     },
 
     selectRandomAvatar: function() {
