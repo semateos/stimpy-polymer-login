@@ -5,10 +5,11 @@
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/pushstate-anchor/pushstate-anchor.html">
 
+<link rel="import" href="../components/app-state.html">
 <link rel="import" href="../components/post-list.html">
 <link rel="import" href="../components/stimpy-user.html">
 
-<polymer-element name="stimpy-posts" attributes="user">
+<polymer-element name="stimpy-posts">
   <template>
     <style>
 
@@ -64,6 +65,8 @@
       }
       
     </style>
+    
+    <app-state state="{{state}}"></app-state>
 
     <core-header-panel>
 
@@ -76,7 +79,7 @@
         
         <div flex></div>
 
-        <a is="pushstate-anchor" href="/login"><stimpy-user id="userButton" user="{{user}}"></user></a>
+        <a is="pushstate-anchor" href="/login"><stimpy-user id="userButton" user="{{state.user}}"></user></a>
 
       </core-toolbar>
 
@@ -93,19 +96,13 @@
       
       ready: function(){
 
-        console.log('stimpy-posts ready');
-
-        var tabs = this.$.tabs;
-        var list = this.$.list;
-        var userButton = this.$.userButton;
-
         var self = this;
+        var tabs = this.$.tabs;
+        var list = this.$.list;        
 
         tabs.addEventListener('core-activate', function() {
           self.$.list.load(tabs.selected);
         });
-
-        this.fire('ready');
       }
     });
 

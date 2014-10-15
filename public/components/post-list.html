@@ -25,7 +25,7 @@
     <post-service id="service" posts="{{posts}}"></post-service>
     
     <div layout vertical center>
-      <post-compose id="compose" user="{{user}}" posts="{{posts}}"></post-compose>
+      <post-compose id="compose" posts="{{posts}}"></post-compose>
       <template repeat="{{post in posts}}">
         <post-card
           favorite="{{post.favorite}}"

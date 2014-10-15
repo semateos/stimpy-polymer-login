@@ -14,9 +14,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
+<link rel="import" href="../components/app-state.html">
 <link rel="import" href="../components/stimpy-ajax.html">
 
-<polymer-element name="stimpy-login" attributes="user wide" center layout vertical>
+<polymer-element name="stimpy-login" attributes="wide" center layout vertical>
 
 <template>
   
@@ -111,6 +112,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </style>
   
+  <app-state state="{{state}}"></app-state>
+
   <stimpy-ajax id="ajax"
     url="/api/user/login"
     method="POST"
@@ -133,12 +136,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card {{ {wide: wide} | tokenList }}" flex layout vertical slide-up-offscreen?="{{parentElement.selected === 'profile'}}" cross-fade="{{!wide && parentElement.selected !== 'profile'}}">
       <div layout vertical flex cross-fade-delayed?="{{parentElement.lastSelected !== 'splash' && wide}}" on-keypress="{{ keypressAction }}">
         <div class="indent" layout vertical>
-          <div class="header">{{userDefaults ? 'Your Profile' : 'Sign In'}}</div>
+          <div class="header">Sign In</div>
           <paper-input label="User Name or Email" id="email"></paper-input>
           <paper-input type="password" label="Password" id="password"></paper-input>
         </div>
         <div horizontal center layout>
-          <paper-button on-tap="{{handleLogout}}" label="Sign Out" hidden?="{{!user}}"></paper-button>
+          <paper-button on-tap="{{handleLogout}}" label="Sign Out" hidden?="{{!state.user}}"></paper-button>
           <div flex></div>
           <paper-fab id="check" icon="check" showing="true" on-tap="{{handleLogin}}"></paper-fab>
         </div>
@@ -164,21 +167,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         } else if (target === this.$.password) {
           // after "last" field, lower keyboard to show avatar list
           this.$.password.blur();
-
         }
       }
 
       if (key === 'Enter') {
         this.handleLogin();
       }
-
-    },
-
-    ready: function() {
-
-      console.log('stimpy-login ready');
-
-      this.fire('ready', {});
     },
 
     handleLogin: function() {
@@ -201,13 +195,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if(response.err){
 
         this.$.error.text = response.err;
+
         this.$.error.show();
 
       }else if(response.user){
 
-        console.log('here');
+        console.log('logged in');
 
-        this.user = response.user;
+        this.state.user = response.user;
+
+        this.state.router.go('/');
       
       }else{
 
@@ -216,9 +213,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     handleLogout: function() {
-      this.$.ajaxLogout.go();
-      this.user = null;
 
+      this.$.ajaxLogout.go();
+
+      this.state.user = null;
+
+      this.state.router.go('/');
     },
 
     handleLogoutResponse: function(e){

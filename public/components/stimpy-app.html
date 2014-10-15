@@ -9,11 +9,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
-<link rel="import" href="../bower_components/app-router/src/app-router.html">
+<link rel="import" href="../bower_components/app-router/app-router.html">
 
+<link rel="import" href="app-state.html">
 <link rel="import" href="stimpy-ajax.html">
 
-<polymer-element name="stimpy-app" attributes="user">
+<polymer-element name="stimpy-app" attributes="state">
 
   <template>
 
@@ -25,17 +26,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
     
+    <app-state state="{{state}}"></app-state>
+
     <stimpy-ajax id="ajax"
         auto
         url="/api/user"
         method="POST"
         handleAs="json"
-        on-core-response="{{handleUserResponse}}">
+        on-core-response="{{userResponse}}">
     </stimpy-ajax>
 
-    <app-router id="router">
-      <app-route path="/" import="../pages/stimpy-posts.html" on-activate-route-end="{{routeActivated}}"></app-route>
-      <app-route path="/login" import="../pages/stimpy-login.html" on-activate-route-end="{{routeActivated}}"></app-route>
+    <app-router id="router" mode="pushstate">
+      <app-route path="/" import="../pages/stimpy-posts.html"></app-route>
+      <app-route path="/login" import="../pages/stimpy-login.html"></app-route>
     </app-router>
     
   </template>
@@ -44,48 +47,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer('stimpy-app', {
       
-      observe: {
-
-        user: 'userUpdated'
-      },
-
       ready: function(){
 
         console.log('stimpy-app ready');
+
+        this.state.router = this.$.router;
       },
 
-      userUpdated: function(e){
-
-        console.log('userUpdated', this.user);
-        
-        var currentPath = this.$.router.activeRoute.getAttribute('path');
-
-          if(currentPath != '/'){
-
-          this.$.router.go('/');
-        }
-      },
-
-      handleUserResponse: function(e){
+      userResponse: function(e){
 
         var response = this.$.ajax.response;
 
         console.log(response);
 
-        this.user = response.user;
-      },
-
-      routeActivated: function(e){
-
-        var activeElement = this.$.router.activeRouteContent.firstChild;
-
-        //console.log('active element', activeElement);
-
-        activeElement.user = this.user;
-
-        this.bind('user', new PathObserver(activeElement, 'user'));
-
-        activeElement.bind('user', new PathObserver(this, 'user'));
+        this.state.user = response.user;
       }
     });
 
