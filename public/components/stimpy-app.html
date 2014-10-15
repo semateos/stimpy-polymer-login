@@ -13,45 +13,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="stimpy-ajax.html">
 
-
-<polymer-element name="stimpy-app" attributes="user selected">
+<polymer-element name="stimpy-app" attributes="user">
 
   <template>
 
     <style>
     
-    :host{
-      transform: translateZ(0);
-    }
+      :host{
+        transform: translateZ(0);
+      }
 
     </style>
-  
-  <stimpy-ajax id="ajax"
-      auto
-      url="/api/user"
-      method="POST"
-      handleAs="json"
-      on-core-response="{{handleUserResponse}}">
-  </stimpy-ajax>
-  
-  <app-router id="router">
-    <app-route path="/" import="../pages/stimpy-posts.html" 
-      on-activate-route-end="{{onRouteActivate}}"></app-route>
-
-    <app-route path="/login" import="../pages/stimpy-login.html" 
-      on-activate-route-end="{{onRouteActivate}}"></app-route>
-  </app-router>
-
-
-  <!--
-  <core-animated-pages valueattr="id" selected="{{selected}}" transitions="cross-fade-all" auto fit>
     
-    <stimpy-posts id="posts" user="{{user}}" on-user-tapped="{{userTapped}}" fit></stimpy-posts>
+    <stimpy-ajax id="ajax"
+        auto
+        url="/api/user"
+        method="POST"
+        handleAs="json"
+        on-core-response="{{handleUserResponse}}">
+    </stimpy-ajax>
 
-    <stimpy-login id="login" user="{{user}}" fit></stimpy-login>
-
-  </core-animated-pages>
-  -->
+    <app-router id="router">
+      <app-route path="/" import="../pages/stimpy-posts.html" on-activate-route-end="{{routeActivated}}"></app-route>
+      <app-route path="/login" import="../pages/stimpy-login.html" on-activate-route-end="{{routeActivated}}"></app-route>
+    </app-router>
+    
   </template>
 
   <script>
@@ -68,56 +54,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         console.log('stimpy-app ready');
       },
 
-      userUpdated: function(){
+      userUpdated: function(e){
 
-        console.log('userUpdated');
-
-        this.$.router.go('/');
-
-        /*
-          var currentPath = this.$.router.activeRoute.getAttribute('path');
+        console.log('userUpdated', this.user);
+        
+        var currentPath = this.$.router.activeRoute.getAttribute('path');
 
           if(currentPath != '/'){
 
-          this.$.router.go('');
-        }*/
-      },
-
-      userTapped: function(){
-
-        console.log('user tapped bubble');
-
-        this.$.router.go('/login');
+          this.$.router.go('/');
+        }
       },
 
       handleUserResponse: function(e){
 
         var response = this.$.ajax.response;
 
-          console.log(response);
+        console.log(response);
 
-          this.user = response.user;
+        this.user = response.user;
       },
 
-      onRouteActivate: function(e){
-
-        var self = this;
+      routeActivated: function(e){
 
         var activeElement = this.$.router.activeRouteContent.firstChild;
 
-        console.log('active element', activeElement);
+        //console.log('active element', activeElement);
 
-        activeElement.addEventListener('ready', function(e){
+        activeElement.user = this.user;
 
-          console.log('active element ready', this);
+        this.bind('user', new PathObserver(activeElement, 'user'));
 
-          this.bind('user', new PathObserver(self.user));
-          self.bind('user', new PathObserver(this.user));
-
-        });
-
-
-        //activeElement.bind('user', new PathObserver(this.user));
+        activeElement.bind('user', new PathObserver(this, 'user'));
       }
     });
 

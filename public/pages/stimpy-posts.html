@@ -95,30 +95,17 @@
 
         console.log('stimpy-posts ready');
 
-        this.cancelUnbindAll();
-
         var tabs = this.$.tabs;
         var list = this.$.list;
         var userButton = this.$.userButton;
 
         var self = this;
 
-        this.fire('ready', {});
-
         tabs.addEventListener('core-activate', function() {
           self.$.list.load(tabs.selected);
         });
 
-        userButton.addEventListener('user-tapped', function(e){
-
-          console.log('my user tapped');
-          this.fire(e);
-        })
-      },
-
-      detached: function(){
-
-        this.cancelUnbindAll();
+        this.fire('ready');
       }
     });
 

@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../components/stimpy-ajax.html">
 
-<polymer-element name="stimpy-login" attributes="user userDefaults wide" center layout vertical>
+<polymer-element name="stimpy-login" attributes="user wide" center layout vertical>
 
 <template>
   
@@ -178,34 +178,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       console.log('stimpy-login ready');
 
-      this.cancelUnbindAll();
-
       this.fire('ready', {});
-      
-      if (!this.user) {
-        this.selectRandomAvatar();
-      }
-    },
-
-    detached: function(){
-
-      this.cancelUnbindAll();
-    },
-
-    selectRandomAvatar: function() {
-      this.selectedAvatar = Math.floor(Math.random() * 16);
-    },
-
-    userDefaultsChanged: function() {
-
-      if (this.userDefaults) {
-
-        this.selectedAvatar = this.userDefaults.avatar - 1;
-
-      } else {
-
-        this.selectRandomAvatar();
-      }
     },
 
     handleLogin: function() {
@@ -245,7 +218,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     handleLogout: function() {
       this.$.ajaxLogout.go();
       this.user = null;
-      this.userDefaults = null;
+
     },
 
     handleLogoutResponse: function(e){
