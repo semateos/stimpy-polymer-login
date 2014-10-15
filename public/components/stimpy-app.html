@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
-<link rel="import" href="../bower_components/app-router/app-router.html">
+<link rel="import" href="../bower_components/app-router/src/app-router.html">
 
 <link rel="import" href="app-state.html">
 <link rel="import" href="stimpy-ajax.html">
@@ -52,6 +52,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         console.log('stimpy-app ready');
 
         this.state.router = this.$.router;
+
+        var self = this;
+
+        /*setInterval(function(){
+
+          self.
+
+          console.log(document.URL);
+
+        },5000)*/
       },
 
       userResponse: function(e){
