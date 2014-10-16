@@ -21,7 +21,6 @@ files = _.map(files, function(file, key){
             break;
 
         case '.css':
-            console.log('found a css file');
             css.push(relative);
             break;
     }
@@ -32,7 +31,7 @@ files = _.map(files, function(file, key){
 
 var development = {
     js: js.concat([
-        'js/main.js'
+        'bower_components/offlinejs/src/offline.js'
     ]),
     css: css.concat([
         'css/styles.css'

@@ -36,5 +36,15 @@ module.exports = [
         method: 'GET',
         path: '/pages/{path*}',
         config: controller.pages
+    },
+    {
+        method: 'GET',
+        path: '/vulcanized/{path*}',
+        config: controller.vulcanized
+    },
+    {
+        method: 'GET',
+        path: '/cache.manifest',
+        config: controller.manifest
     }
 ]

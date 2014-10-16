@@ -37,5 +37,15 @@ module.exports = {
         handler: {
             directory: { path: rootPath + '/public/pages' }
         }
+    },
+    vulcanized: {
+        handler: {
+            directory: { path: rootPath + '/public/vulcanized' }
+        }
+    },
+    manifest: {
+        handler: function (request, reply) {
+            reply.file(rootPath + '/public/cache.manifest').type('text/cache-manifest');
+        }
     }
 }

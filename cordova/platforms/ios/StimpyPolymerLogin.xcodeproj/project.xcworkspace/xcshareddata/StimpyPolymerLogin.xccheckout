@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4C32D209-4A40-42E5-B96D-002D39B74A75</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StimpyPolymerLogin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EE9FB9F9CC6EF4910CFA71235D1137EE6150F8FB</key>
+		<string>github.com:semateos/stimpy-polymer-login.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>cordova/platforms/ios/StimpyPolymerLogin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EE9FB9F9CC6EF4910CFA71235D1137EE6150F8FB</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:semateos/stimpy-polymer-login.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE9FB9F9CC6EF4910CFA71235D1137EE6150F8FB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE9FB9F9CC6EF4910CFA71235D1137EE6150F8FB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>login</string>
+		</dict>
+	</array>
+</dict>
+</plist>
