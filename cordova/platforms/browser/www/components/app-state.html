@@ -1,0 +1,12 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="app-state" attributes="state">
+  <script>
+    (function() {
+      var state_ = {};
+      Polymer('app-state', {
+        get state() { return state_; }
+      });
+    })();
+  </script>
+</polymer-element>

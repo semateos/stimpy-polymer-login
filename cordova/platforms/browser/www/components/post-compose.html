@@ -1,0 +1,135 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="app-state.html">
+<link rel="import" href="avatar-icon.html">
+<link rel="import" href="stimpy-ajax.html">
+
+<polymer-element name="post-compose" attributes="posts">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 300;
+      position: relative;
+    }
+    
+    core-icon-button {
+      color: #636363;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      
+      position: absolute;
+      height: 36px;
+      width: 36px;
+      right: 15px;
+      bottom: 25px;
+    }
+
+    .avatar{
+      margin-right: 15px;  
+      vertical-align: top;
+      width: 45px;
+      height: 45px;
+    }
+
+    #post {
+      vertical-align: bottom;
+      min-height: 38px;
+      padding: 7px 0 0 0;
+      font-size: 0.8em;
+      line-height: 1em;
+    }
+
+    #post::shadow textarea{
+      width: 80%;
+    }
+
+    </style>
+    
+    <app-state state="{{state}}"></app-state>
+
+    <stimpy-ajax id="ajax"
+      url="/api/post"
+      method="POST"
+      handleAs="json"
+      on-core-response="{{postResponse}}"
+      on-core-error="{{postError}}">
+    </stimpy-ajax>
+    
+    <paper-toast id="error" role="alert" text="Post Failed."></paper-toast>
+
+    <div layout horizontal>
+
+      <avatar-icon class="avatar" avatar="{{state.user.avatar}}"></avatar-icon>
+      <paper-input multiline label="What's up buttercup?" id="post" on-keypress="{{ keypressAction }}"flex></paper-input>
+      <core-icon-button
+        id="send"
+        icon="send"
+        on-tap="{{sendPost}}">
+      </core-icon-button>
+
+    </div>
+
+    <content></content>   
+  </template>
+  <script>
+  Polymer({
+
+    keypressAction: function(event){
+
+    },
+    
+    sendPost: function(event, detail, sender) {
+
+      this.$.post.blur();
+
+      console.log(this.$.post.value);
+
+      this.$.ajax.params = {
+        post: this.$.post.value
+      }
+
+      this.$.ajax.go();    
+    },
+
+    postError: function(event){
+
+      var error = this.$.ajax.error;
+
+      console.log(typeof error, error);
+
+      this.$.error.text = error.error;
+
+      this.$.error.show();
+
+    },
+
+    postResponse: function(event){
+
+      console.log(this.$.ajax.response);
+
+      var response = this.$.ajax.response;
+
+      if(response.err){
+
+        this.$.error.text = response.err;
+        this.$.error.show();
+
+      }else if(response.success){
+
+        this.$.post.value = null;
+
+        this.posts = [response.post].concat(this.posts);
+      }
+    }
+
+  });
+  </script>
+</polymer-element>

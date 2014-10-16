@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="avatars.html">
+
+<polymer-element name="avatar-icon" attributes="avatar width height" touch-action="none" on-tap="{{tapHandler}}">
+  <template >
+    <style>
+    :host {
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      width: 45px;
+      height: 45px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      overflow: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    </style>
+  
+    <core-icon class="avatar" icon="avatars:avatar-{{avatar ? avatar : 12}}"></core-icon>
+
+  </template>
+
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>
