@@ -31,7 +31,8 @@ files = _.map(files, function(file, key){
 
 var development = {
     js: js.concat([
-        'bower_components/offlinejs/src/offline.js'
+        'bower_components/offlinejs/src/offline.js',
+        'js/main.js'
     ]),
     css: css.concat([
         'css/styles.css'
